@@ -1,14 +1,6 @@
 const fs = require('fs');
 module.exports = function () {
-  process.stdout.write('prompt > ');
-  process.stdin.on('data', () => {
-    fs.readdir('./', 'utf8', (err, files) => {
-      if (err) {
-        throw err;
-      } else {
-        process.stdout.write(files.join('\n'));
-        process.stdout.write('\nprompt > ');
-      }
-    });
-  });
+  var files = fs.readdirSync('./');
+  process.stdout.write(files.join('\n'));
+  process.stdout.write('\nprompt > ');
 };
