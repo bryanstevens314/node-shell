@@ -6,8 +6,12 @@ process.stdin.on('data', (data) => {
     for (let i = 1; i < cmd.length; i++) {
       command(cmd[i]);
     }
-  } else {
+    process.stdout.write('\nprompt > ');
+  } else if (cmd.length > 1) {
     command(cmd[1]);
+    process.stdout.write('\nprompt > ');
+  } else {
+    process.stdout.write('\nprompt > ');
   }
-  process.stdout.write('\nprompt > ');
+
 });
